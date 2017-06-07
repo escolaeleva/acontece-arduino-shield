@@ -17,7 +17,9 @@
  created 29 Dec. 2008
  modified 9 Apr 2012
  by Tom Igoe
- modified 5 Jun. 2017 by Rodrigo Rodrigues da Silva
+
+ modified 5 Jun. 2017
+ by Rodrigo Rodrigues da Silva <rodrigo.silva@escolaeleva.com.br>
 
  This code is in the public domain.
 
