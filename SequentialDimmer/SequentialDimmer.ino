@@ -58,9 +58,40 @@ void setup() {
 }
 
 void loop() {
+
+  // read value from sensor and update delay and brightness for LED3
+  updateSensor();
+  // change the analog out value:
+  analogWrite(LED3, brightness);
+  delay(_delay);
+  analogWrite(LED3, 0);
+
+  // read value from sensor and update delay and brightness for LED2
+  updateSensor();
+  analogWrite(LED2, brightness);
+  delay(_delay);
+  analogWrite(LED2, 0);
+
+  // read value from sensor and update delay and brightness for LED1
+  updateSensor();
+  analogWrite(LED1, brightness);
+  delay(_delay);
+  analogWrite(LED1, 0);
+
+  // read value from sensor and update delay and brightness for LED0
+  updateSensor();
+  analogWrite(LED0, brightness);
+  delay(_delay);
+  analogWrite(LED0, 0);
+}
+
+/*
+ * This function reads a value from  LDR (at pin A1) and maps it to delay and brightness values
+ */
+void updateSensor() {
   // read the analog in value:
   sensorValue = analogRead(LDR);
-  
+
   // map it to the range of the analog out:
   brightness = constrain(map(sensorValue, sensor_min, sensor_max, bright_max, bright_min), bright_min, bright_max);
   _delay =  constrain(map(sensorValue, sensor_min, sensor_max , delay_min, delay_max), delay_min, delay_max);
@@ -72,18 +103,4 @@ void loop() {
   Serial.print(brightness);
   Serial.print("\t delay = ");
   Serial.println(_delay);
-  
-  // change the analog out value:
-  analogWrite(LED3, brightness);
-  delay(_delay);
-  analogWrite(LED3, 0);
-  analogWrite(LED2, brightness);
-  delay(_delay);
-  analogWrite(LED2, 0);
-  analogWrite(LED1, brightness);
-  delay(_delay);
-  analogWrite(LED1, 0);
-  analogWrite(LED0, brightness);
-  delay(_delay);
-  analogWrite(LED0, 0);
 }
